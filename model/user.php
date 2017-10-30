@@ -144,10 +144,20 @@ Class User {
             return $e->getMessage();
         }
     }
-        public function plus_fun($id, $cost){
+    public function plus_fun($id, $cost){
         try {
-            $query=$this->_db->prepare('UPDATE cart SET quantity= quantity + :quant , cost = cost + :cost');
-            $query->execute(array(':quant'=>1,':cost'=>$cost));
+            $query=$this->_db->prepare('UPDATE cart SET quantity= quantity + :quant , cost = cost + :cost WHERE id=:id');
+            $query->execute(array(':quant'=>1,':cost'=>$cost,':id'=>$id));
+            $result=$query->rowCount();
+            return $result;
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+    public function minus_fun($id, $cost){
+        try {
+            $query=$this->_db->prepare('UPDATE cart SET quantity= quantity - :quant , cost = cost - :cost WHERE id=:id');
+            $query->execute(array(':quant'=>1,':cost'=>$cost,':id'=>$id));
             $result=$query->rowCount();
             return $result;
         } catch (PDOException $e) {

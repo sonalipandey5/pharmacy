@@ -84,8 +84,15 @@ if(isset($_POST['function_name']))
         $id=$_POST['id'];
         $name=$_POST['name'];
         $price= $user->get_price($name);
-        $result=$user->plus_fun($id);
-        print_r(json_encode($price));
+        $result=$user->plus_fun($id,$price['cost']);
+        print_r(json_encode($result));
+    }
+    if ($calling_function=='minus_fun') {
+        $id=$_POST['id'];
+        $name=$_POST['name'];
+        $price= $user->get_price($name);
+        $result=$user->minus_fun($id,$price['cost']);
+        print_r(json_encode($result));
     }
 }
 else
