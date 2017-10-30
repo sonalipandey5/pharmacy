@@ -5,6 +5,9 @@ if(isset($_SESSION['position'])){
   if($_SESSION['position']==1){
     header('Location: admin_p.php');
   }
+  if($_SESSION['position']==3){
+    header('Location: cashier.php');
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -29,76 +32,58 @@ if(isset($_SESSION['position'])){
         <li id="container-1"><span class="icon"><i class="material-icons">search</i></span>
             <input type="search" id="search"/>
         </li>
+        <li><a href="user.php">Home</a></li>
         <li><a href="medicines.php">Medicines</a></li>
-        <li><a href="men.php">Men</a></li>
         <li><a href="women.php">Women</a></li>
         <li><a href="infant.php">Infants</a></li>
-        <li><a href="badges.html"><i class="material-icons left" style="margin-right: -5%;">shopping_cart</i></a></li>
+        <li><a href="cart.php"><i class="material-icons left" style="margin-right: -5%;">shopping_cart</i></a></li>
         <li id="lout"><a>SignOut</a></li>
       </ul>
     </div>
   </nav>
    <div class="row">
-      <div class="col s12">
-        <div class="slider">
+      <div class="col s8">
+        <div class="slider" style="margin-top: -0.1%;">
           <ul class="slides">
             <li>
-              <img src="http://www.glossyfinds.com/wp-content/uploads/2014/10/category-sale.jpg">
+              <img src="http://www.zafaxpharma.com/flash/9/data1/images/mainbanner1.jpg">
             </li>
             <li>
-              <img src="https://d3r2zleywq7959.cloudfront.net/media/wysiwyg/hicarousel//2/0/2032-priceline-new_level_1_website_banners_toiletries_women_s_essentials_women_s_essentials.jpg">
+              <img src="https://www.uts.edu.au/sites/default/files/styles/full_width_small_1x/public/2017-08/GSH-Pharmacy-Banner.jpg?itok=F3cBtU0c">
             </li>
             <li>
-              <img src="https://d3r2zleywq7959.cloudfront.net/media/wysiwyg/hicarousel//2/0/2032-priceline-new_level_1_website_banners_mens_fa_men_s_essentials_gift_sets.jpg">
+              <img src="http://martjackstorage.blob.core.windows.net/in-resources/2c7f2299-9129-4131-839f-b80663cec2e2/Images/userimages/Aster-Banners-15-09-16/BabyandMother/BABY-ESSENTIALS.jpg">
             </li>
             <li>
-              <img src="https://www.priceline.com.au/media/wysiwyg/hicarousel//2/0/2032-priceline-new_level_1_website_banners_toiletries_bathroom_basics.jpg">
-            </li>
-            <li>
-              <img src="https://creativechump.files.wordpress.com/2013/03/3963-bdf-nivea-stress-protect-web-banner-transparant-bg.jpg">
-            </li>
-            <li>
-              <img src="https://img.honest.com/uploads/managed_assets/file/13507/WidgetMember-84-widget_member/slide_fullscreen/image-093c326d-4d26-4c11-955a-35130191cbd9.jpg">
+              <img src="http://pimg.tradeindia.com/76719/2/template_photo_3.jpg">
             </li>
           </ul>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col s3 m3" id="card">
-          <div class="card">
+      <div class="col s3 ">
+          <div class="card" style="margin-top: -1%;float: left;">
             <div class="card-image">
-              <img src="images\11.jpg" id="img3" style="height:150px;">
+              <img src="http://cienciauanl.uanl.mx/wp-content/uploads/2015/04/farmacosluz.jpg" id="img3" style="height:100px;">
             </div>
             <div class="card-action">
               <a href="medicines.php">Shop for Medicines</a>
             </div>
           </div>
       </div>
-      <div class="col s3 m3">
-          <div class="card">
+      <div class="col s4">
+          <div class="card" style="float: right; width: 300px;">
             <div class="card-image">
-              <img src="images\9.jpg" id="img4" style="height:150px;">
-            </div>
-            <div class="card-action">
-              <a href="men.php">Shop for Men</a>
-            </div>
-          </div>
-      </div>
-      <div class="col s3 m3">
-          <div class="card">
-            <div class="card-image">
-              <img src="images\10.jpg" id="img5" style="height:150px;">
+              <img src="https://d3r2zleywq7959.cloudfront.net/media/wysiwyg/hicarousel//2/0/2032-priceline-new_level_1_website_banners_toiletries_women_s_essentials_women_s_essentials.jpg" id="img4" style="height:100px;">
             </div>
             <div class="card-action">
               <a href="women.php">Shop for Women</a>
             </div>
           </div>
       </div>
-      <div class="col s3 m3">
+      <div class="col s3">
           <div class="card">
             <div class="card-image">
-              <img src="images\8.jpg" id="img6" style="height:150px;">
+              <img src="http://www.lasplash.com/uploads//f2b0/5577e2e1ad0ae-best-baby-products-for-infants-3.jpg" id="img5" style="height:100px;">
             </div>
             <div class="card-action">
               <a href="infant.php">Shop for Infants</a>

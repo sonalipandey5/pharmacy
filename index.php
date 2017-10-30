@@ -7,6 +7,9 @@ if(isset($_SESSION['position'])){
   else if($_SESSION['position']==2){
     header('Location: user.php');
   }
+  else if($_SESSION['position']==3){
+    header('Location: cashier.php');
+  }
 }
 ?>
 
@@ -20,19 +23,6 @@ if(isset($_SESSION['position'])){
 
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/login.css">
-<!--     <style type="text/css">
-      .input-field .prefix.active{
-        color: orange;
-      }
-      .input-field input[type=text]:focus + label {
-        color: orange;
-      }
-    /* label underline focus color */
-      .input-field input[type=text]:focus {
-         border-bottom: 1px solid orange;
-         box-shadow: 0 1px 0 0 orange;
-       }
-    </style> -->
 </head>
 <body>
 <main>
@@ -42,7 +32,7 @@ if(isset($_SESSION['position'])){
       <div class="row">
         <form class="col s6 offset-s3 z-depth-5">
         <div class="imgcontainer">
-          <img src="images/pharmacy_logo.png"  alt="Logo">
+          <img src="http://www.brandcrowd.com/gallery/brands/pictures/picture13787516129015.png"  alt="Logo">
         </div>
           <div class="row">
             <div class="input-field col s6 offset-s3">
@@ -80,7 +70,7 @@ if(isset($_SESSION['position'])){
               <div class="modal-content">
                 <h4>Register Form</h4>
                   <div class="row">
-                    <form class="col s12">
+                    <form class="col s12" id="register">
                       <div class="row">
                         <div class="input-field col s12">
                           <input placeholder="Enter Full Name" id="full_name" type="text" class="validate">
@@ -91,6 +81,12 @@ if(isset($_SESSION['position'])){
                         <div class="input-field col s12">
                           <input id="email" type="email" class="validate" placeholder="Enter Email ID">
                           <label for="email">Email</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input id="phone" type="text" class="validate" placeholder="Enter Phone Number" maxlength="10">
+                          <label for="phone">Phone Number</label>
                         </div>
                       </div>
                       <div class="row">
@@ -111,7 +107,7 @@ if(isset($_SESSION['position'])){
                     </form>
                   </div>
                   <center>
-                  <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                  <button class="btn waves-effect waves-light" type="submit" name="action" id="register">Submit
                     <i class="material-icons right">send</i>
                   </button>
                   </center>

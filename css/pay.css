@@ -7,5 +7,17 @@ header, main, footer {
         padding-left: 0;
       }
     }
+#paytm1{
+    display: none;
+}
 
-
+#cod1{
+    display: none;
+}
+#addr{
+    height: 200px;
+    width: 500px;
+}
+#paytm2{
+  display: none;
+}

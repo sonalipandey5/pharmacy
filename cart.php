@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Medicines</title>
+    <title>Cart</title>
     <script src="js/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/materialize.min.css">
     <script src="js/materialize.min.js"></script>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/medicines.css">
+    <link rel="stylesheet" type="text/css" href="css/cart.css">
 </head>
 <body>
   <nav>
@@ -20,6 +20,7 @@
         </li>
         <li><a href="user.php">Home</a></li>
         <li><a href="medicines.php">Medicines</a></li>
+        <li><a href="men.php">Men</a></li>
         <li><a href="women.php">Women</a></li>
         <li><a href="infant.php">Infants</a></li>
         <li><a href="cart.php"><i class="material-icons left" style="margin-right: -5%;">shopping_cart</i></a></li>
@@ -27,35 +28,23 @@
       </ul>
     </div>
   </nav>
-   <div class="row">
-      <div class="col s12">
-        <div class="slider" style="margin-top: -0.1%;">
-          <ul class="slides">
-            <li>
-              <img src="https://d3r2zleywq7959.cloudfront.net/media/wysiwyg/hicarousel//2/0/2032-priceline-new_level_1_website_banners_health_medicines.jpg">
-            </li>
-            <li>
-              <img src="http://medicas.in/shop/asset/68945_Banner_2[1].jpg">
-            </li>
-          </ul>
-        </div>
-      </div>
+  <div class="row" id="table_cart">
+    <div class="col s12">
+      <table class="striped centered responsive-table">
+        <thead>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Remove</th>
+          <th>Cost</th>
+        </thead>
+        <tbody id="details_cart">
+        </tbody>
+      </table>
     </div>
-    <br>
-    <h3><center>List of Products</center></h3><br>
-    <div class="row">
-      <div class="col s3" id="med1" style="margin-left: 10%;">
-          <div class="card">
-            <div class="card-image">
-             <a href="med_product.php" id="med_image"></a>
-            </div>
-            <div class="card-action">
-            <p id="price"></p>
-            <a style="float: right;margin-top: -14%" id="medicine_cart">Buy Now</a>
-            </div>
-          </div>
-      </div>
+    <div class="col s2 offset-s10">
+      <a class="waves-effect waves-light btn  indigo accent-2" id="sub_cart" style="margin-top: 5%;" href="pay.php"> Place Order </a>
     </div>
-<script type="text/javascript" src="js/medicines.js"></script>
+  </div>
+<script type="text/javascript" src="js/cart.js"></script>
 </body>
 </html>

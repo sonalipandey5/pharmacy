@@ -1,14 +1,12 @@
-$(document).ready(function(){
-      $('.slider').slider();
-    });
-$(document).ready(function(){
+  $(".button-collapse").sideNav();
+  $(document).ready(function(){
     $('#lout').click(function(e){
         e.preventDefault();
         sign_out();
     });
     function sign_out(){
         $.ajax({
-            url: "controller/AdminController.php",
+            url: "controller/CashierController.php",
             type: "POST",
             data: {
                 function_name: "sign_out"

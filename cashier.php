@@ -5,21 +5,21 @@ if(isset($_SESSION['position'])){
   if($_SESSION['position']==2){
     header('Location: user.php');
   }
-  if($_SESSION['position']==3){
-    header('Location: cashier.php');
+  if($_SESSION['position']==1){
+    header('Location: admin_p.php');
   }
 }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Page</title>
+    <title>Cashier Page</title>
     <script src="js/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/materialize.min.css">
     <script src="js/materialize.min.js"></script>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/cashier.css">
     <style type="text/css">
       .input-field .prefix.active{
         color: orange;
@@ -46,8 +46,7 @@ if(isset($_SESSION['position'])){
       <a href="#!email"><span class=" email"><?php echo $_SESSION['email'];?></span></a>
     </div>
     </li>
-    <li><a href="admin_medicines.php" class="collapsible-header">List Of Products</a></li>
-    <li><a href="admin_add_medicine.php" class="collapsible-header">Add Product</a></li>
+    <li><a href="transaction.php" class="collapsible-header">See Transactions</a></li>
   </ul>
 <main>
   <div class="row">
@@ -57,6 +56,6 @@ if(isset($_SESSION['position'])){
   </div>
 </main>
   <?php require("footer.php");?>
-<script type="text/javascript" src="js/admin_p.js"></script>
+<script type="text/javascript" src="js/cashier.js"></script>
 </body>
 </html>

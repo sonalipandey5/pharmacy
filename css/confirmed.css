@@ -1,6 +1,17 @@
 nav ul a {
     color: black;
 }
+
+#1{
+  text-align: center;
+  margin-top: 20%;
+  font-size: 40px;
+}
+#2{
+  text-align: center;
+  margin-top: 10%;
+  font-size: 20px;
+}
 .nav-wrapper{
     background-color: white;
 }
@@ -45,16 +56,8 @@ margin-left: 1%;
   z-index: 1;
   color: #4f5b66;
 }
-#container-1 input#search:hover, .container-1 input#search:focus, .container-1 input#search:active{
+#container-1 input#search:hover, .container-1 input#search:focus, .container-1 input#search:active
+{
     outline:1px solid black;
     background: #ffffff;
   }
-.slider {
-    padding-left: 300px;
-    padding-right: 10%;
-    margin-top: 5%;
-}
-.card-action{
-  height: 50px;
-}
-

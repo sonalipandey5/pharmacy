@@ -20,6 +20,8 @@ catch(PDOException $e)
 }
 require_once "model/user.php";
 require_once "model/admin.php";
+require_once "model/cashier.php";
 $admin= new Admin($conn);
 $user = new User($conn);
+$cashier = new Cashier($conn);
 ?>
