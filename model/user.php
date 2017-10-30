@@ -126,8 +126,8 @@ Class User {
     }
     public function get_cart(){
         try {
-            $query=$this->_db->prepare('SELECT * FROM cart WHERE name=:name');
-            $query->execute(array(':name'=>$_SESSION['email']));
+            $query=$this->_db->prepare('SELECT * FROM cart WHERE name=:name AND paid=:paid');
+            $query->execute(array(':name'=>$_SESSION['email'],':paid'=>'0'));
             $result=$query->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
@@ -158,6 +158,56 @@ Class User {
         try {
             $query=$this->_db->prepare('UPDATE cart SET quantity= quantity - :quant , cost = cost - :cost WHERE id=:id');
             $query->execute(array(':quant'=>1,':cost'=>$cost,':id'=>$id));
+            $result=$query->rowCount();
+            return $result;
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+    public function get_cart_details(){
+        try {
+            $query=$this->_db->prepare('SELECT * FROM cart WHERE paid=:paid AND name=:name');
+            $query->execute(array(':paid'=>'0',':name'=>$_SESSION['email']));
+            $result=$query->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+    public function reduce_quant($product,$quantity){
+        try {
+            $query=$this->_db->prepare('UPDATE medicine SET quantity=quantity-:quant WHERE name=:product');
+            $query->execute(array(':quant'=>$quantity,':product'=>$product));
+            $result=$query->rowCount();
+            return $result;
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+    public function mark_cart_paid($id){
+        try {
+            $query=$this->_db->prepare('UPDATE cart SET paid=:paid WHERE id=:id');
+            $query->execute(array(':paid'=>'1',':id'=>$id));
+            $result=$query->rowCount();
+            return $result;
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+    public function get_buy_now(){
+        try {
+            $query=$this->_db->prepare('SELECT * FROM buy_now WHERE paid=:paid AND user=:name ORDER BY id DESC LIMIT 1');
+            $query->execute(array(':paid'=>'0',':name'=>$_SESSION['email']));
+            $result=$query->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+    public function mark_bn_paid($id){
+        try {
+            $query=$this->_db->prepare('UPDATE buy_now SET paid=:paid WHERE id=:id');
+            $query->execute(array(':paid'=>'1',':id'=>$id));
             $result=$query->rowCount();
             return $result;
         } catch (PDOException $e) {

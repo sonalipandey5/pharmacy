@@ -44,6 +44,7 @@ if(isset($_SESSION['position'])){
        <a class="waves-effect waves-light btn  red darken-4" id="lout" style="margin-top: 5%;"> LogOut</a>
     </div>
   </div>
+  <input type="hidden" id="prev_loc">
   <div class="row">
     <div id="credit1">
       <form id="credit_card">
@@ -78,7 +79,7 @@ if(isset($_SESSION['position'])){
           </div>
         </div>
         <div class="col s2 offset-s10">
-        <a class="waves-effect waves-light btn indigo accent-2" id="credit_sub" href="transaction.php" style="margin-top: 5%;">Submit</a>
+        <a class="waves-effect waves-light btn indigo accent-2" id="credit_sub" style="margin-top: 5%;">Submit</a>
       </div>
       </form>
     </div>
@@ -107,7 +108,7 @@ if(isset($_SESSION['position'])){
         <label for="onum">Enter OTP</label>
       </div>
       <div class="col s2 offset-s10">
-          <a class="waves-effect waves-light btn indigo accent-2" id="pay" href="transaction.php" style="margin-top: 5%;">Pay</a>
+          <a class="waves-effect waves-light btn indigo accent-2" id="pay" style="margin-top: 5%;">Pay</a>
       </div>
     </div>
   </div>
@@ -120,7 +121,7 @@ if(isset($_SESSION['position'])){
       <label style="margin-left: 2%;" id="label">Enter Your Address ....</label>
       </div>
       <div class="col s4 offset-s8">
-          <a class="waves-effect waves-light btn indigo accent-2" id="pay_cod" href="confirmed.php" style="margin-top: 5%;">Pay On Delivery </a>
+          <a class="waves-effect waves-light btn indigo accent-2" id="pay_cod" style="margin-top: 5%;">Pay On Delivery </a>
       </div>
     </div>
     </form>

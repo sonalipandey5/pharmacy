@@ -40,6 +40,7 @@ $(document).ready(function(){
                 for (var i = 0; i < arr.length; i++) {
                     string+="<tr><td><img src='"+arr[i]['image']+"' style='height:200px;width:200px'></td></tr>";
                     string2='&#8377;'+arr[i]['cost'];
+                    $('#infant_cart').attr('data-id',arr[i]['name']);
                 }
                 $('#price').html(string2);
                 $('#infant_img').html(string);
@@ -50,4 +51,24 @@ $(document).ready(function(){
             }
         });
     }
+    $(document).on('click','#infant_cart',function(e){
+        e.preventDefault();
+        var product_id = $(this).attr('data-id');
+        var quantity = '1';
+        $.ajax({
+            url:"controller/UserController.php",
+            type: "POST",
+            data:{
+                function_name: 'buy_now',
+                id:product_id,
+                quantity:quantity
+            },
+            success: function(response){
+                console.log(response);
+                if(response=='1' || response=='2'){
+                    window.location.replace('pay.php');
+                }
+            }
+        });
+    });
 });

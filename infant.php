@@ -1,3 +1,7 @@
+<?php
+  require_once 'connect.php';
+  $_SESSION['previous_page']='buy_now';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +55,7 @@
             </div>
             <div class="card-action">
               <p id="price"></p>
-              <a style="float: right;margin-top: -14%;" id="infant_cart"> Buy Now</a>
+              <a href="#" style="float: right;margin-top: -14%;" id="infant_cart"> Buy Now</a>
             </div>
           </div>
       </div>

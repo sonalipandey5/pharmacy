@@ -1,3 +1,7 @@
+<?php
+  require_once 'connect.php';
+  $_SESSION['previous_page']='cart';
+?>
 <!DOCTYPE html>
 <html>
 <head>

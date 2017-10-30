@@ -22,19 +22,41 @@ if(isset($_POST['function_name']))
         $debit3=$_POST['debit3'];
         $dat1=$_POST['dat1'];
         $cvv=$_POST['cvv'];
+        $source=$_POST['source'];
         $number = $debit.$debit1.$debit2.$debit3;
         if(strlen($number)==16){
             $result=$user->credit_pay($debit,$debit1,$debit2,$debit3,$dat1,$cvv);
-            print_r(json_encode($result));
+            if($source=='cart'){
+                $result2=$user->get_cart_details();
+                for ($i=0; $i < sizeof($result2); $i++) { 
+                    $result3=$user->reduce_quant($result2[$i]['product_id'],$result2[$i]['quantity']);
+                    $result4=$user->mark_cart_paid($result2[$i]['id']);
+                }
+            }else if($source=='buy_now'){
+                $result2=$user->get_buy_now();
+                $result3=$user->reduce_quant($result2[0]['product_name'],'1');
+                $result4=$user->mark_bn_paid($result2[0]['id']);
+            }
+            print_r(json_encode($result4));
         }else{
             print_r('3');
         }
-
-
     }
     if ($calling_function=='cod_pay' && !empty($_POST["addr"])) {
         $addr=$_POST['addr'];
+        $source=$_POST['source'];
         $result=$user->cod_pay($addr);
+        if($source=='cart'){
+            $result2=$user->get_cart_details();
+            for ($i=0; $i < sizeof($result2); $i++) { 
+                $result3=$user->reduce_quant($result2[$i]['product_id'],$result2[$i]['quantity']);
+                $result4=$user->mark_cart_paid($result2[$i]['id']);
+            }
+        }else if($source=='buy_now'){
+            $result2=$user->get_buy_now();
+            $result3=$user->reduce_quant($result2[0]['product_name'],'1');
+            $result4=$user->mark_bn_paid($result2[0]['id']);
+        }
         print_r(json_encode($result));
 
     }
@@ -44,6 +66,21 @@ if(isset($_POST['function_name']))
         $result=$user->paytm_pay($pnum,$cost);
         print_r(json_encode($result));
 
+    }
+    if ($calling_function=='paytm_pay_final') {
+        $source=$_POST['source'];
+        if($source=='cart'){
+            $result2=$user->get_cart_details();
+            for ($i=0; $i < sizeof($result2); $i++) { 
+                $result3=$user->reduce_quant($result2[$i]['product_id'],$result2[$i]['quantity']);
+                $result4=$user->mark_cart_paid($result2[$i]['id']);
+            }
+        }else if($source=='buy_now'){
+            $result2=$user->get_buy_now();
+            $result3=$user->reduce_quant($result2[0]['product_name'],'1');
+            $result4=$user->mark_bn_paid($result2[0]['id']);
+        }
+        print_r(json_encode('1'));
     }
     if ($calling_function=='infant_list') {
         $result=$user->infant_list();
@@ -93,6 +130,9 @@ if(isset($_POST['function_name']))
         $price= $user->get_price($name);
         $result=$user->minus_fun($id,$price['cost']);
         print_r(json_encode($result));
+    }
+    if($calling_function == 'previous_page'){
+        print_r($_SESSION['previous_page']);
     }
 }
 else

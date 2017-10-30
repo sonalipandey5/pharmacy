@@ -54,6 +54,20 @@
     $("#addr").click(function(){
         $("#label").hide();
     });
+    $.ajax({
+        url: "controller/UserController.php",
+        type: "POST",
+        data:{
+            function_name: 'previous_page',
+        },
+        success: function(data){
+            console.log(data);
+            $('#prev_loc').val(data);
+        },
+        error:function(response){
+            console.log(response);
+        }
+    });
     $("#credit_sub").click(function(e){
         e.preventDefault();
         var debit=$('#debit').val();
@@ -62,6 +76,7 @@
         var debit3=$('#debit3').val();
         var dat1=$('#dat1').val();
         var cvv=$('#cvv').val();
+        var source=$('#prev_loc').val();
         if(debit.length == 4 && debit1.length == 4 && debit2.length == 4 && debit3.length == 4 ){
             $.ajax({
                 url:"controller/UserController.php",
@@ -73,7 +88,8 @@
                     debit2:debit2,
                     debit3:debit3,
                     dat1:dat1,
-                    cvv:cvv
+                    cvv:cvv,
+                    source:source
                 },
                 success: function(data){
                     console.log(data);
@@ -99,12 +115,14 @@
     $("#pay_cod").click(function(a){
         a.preventDefault();
         var addr=$('#addr').val();
+        var source=$('#prev_loc').val();
         $.ajax({
             url:"controller/UserController.php",
             type: "POST",
             data:{
                 function_name: 'cod_pay',
-                addr:addr
+                addr:addr,
+                source:source
             },
             success: function(data){
                 console.log(data);
@@ -125,7 +143,6 @@
         a.preventDefault();
         var pnum=$('#pnum').val();
         var cost=$('#cost').val();
-        console.log(pnum);
         $.ajax({
             url:"controller/UserController.php",
             type: "POST",
@@ -135,7 +152,7 @@
                 cost:cost
             },
             success: function(data){
-                // console.log(data);
+                console.log(data);
                 if(data==1){
                     // Materialize.toast('Data Added',3000); You dont need to show the user ki data added
                     $('#paytm_pay').trigger("reset");
@@ -149,5 +166,29 @@
             }
         });
     });
-
+    $('#pay').click(function(a){
+        a.preventDefault();
+        var source=$('#prev_loc').val();
+        $.ajax({
+            url:"controller/UserController.php",
+            type: "POST",
+            data:{
+                function_name: 'paytm_pay_final',
+                source:source
+            },
+            success: function(data){
+                console.log(data);
+                if(data=='1'){
+                    Materialize.toast('Data Added',3000);
+                    $('#onum').val('');
+                }
+                if (data=="2") {
+                    Materialize.toast('Fill In All The Fields',3000);
+                }
+            },
+            error:function(response){
+                console.log(response);
+            }
+        });
+    });
 });
